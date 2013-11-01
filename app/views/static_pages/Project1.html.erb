@@ -1,0 +1,30 @@
+<h1>Project_1</h1>
+<h2>Project Description: Custom Home Page Route</h2>
+<p> Doing this project, I learnt how to generate pages and some of the rails command.  Professor provided the projects.yml file. I also learnt some basic html ctags.  The basic commands to create a project:
+</P><p>1. cd ~/rails_projects
+</p><p>2. rails new projectname
+</p><p>3. cd projectname
+</p><p>4. vi Gemfile (to edit the Gemfile for libraries to be use)
+</p><p>5. bundle install
+</p><p>6. git checkout -b branchname (so not to mess up the master)
+</p><p>7. rails generate scaffold dbtablename field1 field2....
+</p><p>8. bundle exec rake db:migrate
+</p><p>9. rails generate controllers Pages homepagename page1 page2 ...
+</p><p>10.vi /config/routes.rb ( to modify the routes.rb to add the pages)
+</p><p>11.vi /config/projects.yml (to create yml file)
+</p><p>12.vi /config/application.rb (to add Fileload (for yml)
+</p><p>13.vi app/views/pages/xxxx.html.erb(for each pages content)
+</p><p>14.vi /config/routes.rb (to change to link to path
+</p><p>15.git add .  (to add the changes)
+</p><p>16.git commit -am "description for the git"
+</p><p>17.git checkout master
+</p><p>18.git merge branchname (to merge the changes with master)
+</p><p>19.git remote add origin https://github.com/foldername/projectname.git
+</p><p>20.git push -u origin master
+</p><p>21.heroku create - to create the heroku site
+</p><p>22.git push heroku master (to push the project to heroku)
+</p><p>23.Use browser to navigate the project from the heroku URL returned when create heroku site in step 21.
+</P>
+<h3>URL:
+<td><%= project_1_path %></td>
+</h3>

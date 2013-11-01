@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Projectid:</strong>
+  <%= @projecttbl.ProjectID %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @projecttbl.Description %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @projecttbl.URL %>
+</p>
+
+<%= link_to 'Edit', edit_projecttbl_path(@projecttbl) %> |
+<%= link_to 'Back', projecttbls_path %>

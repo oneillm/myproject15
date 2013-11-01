@@ -1,0 +1,31 @@
+<h1>Listing projecttbls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Projectid</th>
+      <th>Description</th>
+      <th>Url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projecttbls.each do |projecttbl| %>
+      <tr>
+        <td><%= projecttbl.ProjectID %></td>
+        <td><%= projecttbl.Description %></td>
+        <td><%= projecttbl.URL %></td>
+        <td><%= link_to 'Show', projecttbl %></td>
+        <td><%= link_to 'Edit', edit_projecttbl_path(projecttbl) %></td>
+        <td><%= link_to 'Destroy', projecttbl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Projecttbl', new_projecttbl_path %>

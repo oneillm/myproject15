@@ -1,0 +1,13 @@
+#project yml file
+project_0:
+  url: "/"
+  description: "Environment Set Up"
+project_1:
+  url: "/"
+  description: "Customer Home Page Route"
+project_2:
+  url: "/pages/Project_2"
+  description: "Description of Bootstrap set up"
+project_3:
+  url: "/pages/Project_3"
+  description: "Show Calendar"

@@ -1,0 +1,28 @@
+<h1>Project_2</h1>
+<h2>Project Description: Description of Bootstrap set up</h2>
+<p>    Steps that I went through:</p>
+<p>    1. git checkout -b mybranchname 
+<p>    2. edit the Gemfile to add : gem 'bootstrap-sass', '~> 2.3.2.0'</p>
+<p>    3. run: bundle install and get an error about SSL-Connection and certification </p>
+<p>    4. posted the issue to GoogleGroup site for help </p>
+<p>    5. Search online for help -- after 2 hours finally find the solution from https://rvm.io/support/fixing-broken-ssl-certificates </p>
+<p>    6. run: rvm osx-ssl-certs update all </p>
+<p>    7. run: bundle install again this time, works </p>
+<p>    8. modify the project config/routes.rb, adding the Project2 page </p>
+<p>    9. modify app/controllers/static_pages_controller.rb to add Project2 action </p>
+<p>   10. create the app/views/static_pages/Project2.html.erb </p> 
+<p>   11. modify config/projects.yml to add project_2 description and url lines </p>
+<p>   12. modify the tags in each of the project's html.erb to work with the css
+</p>
+<p>   13. add the line config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif) to config/application.rb
+, not sure if it is necessary.
+</p>
+<p>   14. edit app/assets/stylesheets/static_pages.css.scss to add css style to work with html.
+</p>
+<p>   15. One issue: the html.erb seems to save with the name in lowercase even the first letter of the file name is Upper case, causing error finding page when run.
+ Try to check the various files, yml routes.rb, could not identify anything different.
+</p>
+<br></br>
+<h3>URL: 
+<td><%= project_2_path %></td>
+</h3>
