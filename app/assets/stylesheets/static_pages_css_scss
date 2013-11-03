@@ -139,20 +139,8 @@ table.calendar tbody td{
    font-weight: bold;
    width: 90px;
    height: 90px;
-   border: 1px solid black;
 }
-table.calendar td {
-   border: 1px solid black;
-}
-
 table.calendar td:hover {
   background-color: #FFFFCC;
   color: #222;
-}
-table.calendar td:focus {
-  background-color: #c0c0c0;
-  color: #222;
-}
-.on {
-  background-color: #c0c0c0;
 }
