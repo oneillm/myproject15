@@ -69,7 +69,7 @@ Appointment Time:
                  
                 $('.calendar td').css("background-color","");
                 $('.calendar td.on').removeClass('on');
-                $(this).addClass('on');
+                $(this).css("background-color","#c0c0c0");
                 $(this).append(" " + desc + " " + document.getElementById('apptime').value);
 
             }
