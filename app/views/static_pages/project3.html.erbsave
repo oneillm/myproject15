@@ -41,20 +41,10 @@ function fSetSelectedDay(myElement){
           
 	     var tempd = document.getElementById('tblSeltime');
              var selvalue = tempd.options[tempd.selectedIndex].value;                   
-              if (document.getElementById('apptdesc').value != "") {
-             
-                 if(!isNaN(parseInt(myElement.innerText.substr(0,1)))) {  
+           if(document.getElementById('apptdesc').value != "") {
+              if(!isNaN(parseInt(myElement.innerText.substr(0,1)))) {  
 		   myElement.innerText += " " + selvalue + " " + document.getElementById('apptdesc').value  ;
-	              
-	               var cellcolor =  document.getElementById("caltbl");
-                            var cellLen = cellcolor.rows[0].cells.length;
-                            var cellrow = cellcolor.rows.length;
-                              for (var j = 1; j < cellrow; j++){
-                                 for (var i = 0 ; i < cellLen; i++){
-                                       cellcolor.rows[j].cells[i].bgColor = "";
-                                 
-                                  }
-                              }
+            
                  myElement.bgColor = "#c0c0c0";
                  objPrevElement.bgColor = "";
                  objPrevElement = myElement;
@@ -143,10 +133,6 @@ for (w = 1; w < 6; w++) {
         if (!isNaN(myMonth[w][d])) {
             document.write("<font id=calDateText onMouseOver='fToggleColor(this)' style='CURSOR:Hand;FONT-FAMILY:Arial;FONT-SIZE:" + sDateTextSize + ";FONT-WEIGHT:" + sDateTextWeight + "' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)>" + myMonth[w][d] + "</font>");
       
-                if (myMonth[w][d] == new Date().getDate()){
-                      document.getElementById('caltbl').rows[w].cells[d].bgColor = "#c0c0c0";
-                }
-
         } else {
           document.write("<font id=calDateText onMouseOver='fToggleColor(this)' style='CURSOR:Hand;FONT-FAMILY:Arial;FONT-SIZE:" + sDateTextSize + ";FONT-WEIGHT:" + sDateTextWeight + "' onMouseOut='fToggleColor(this)' onclick=fSetSelectedDay(this)>  </font>");
         }      
@@ -172,22 +158,26 @@ myMonth = fBuildCal(iYear, iMonth + 1);
 var tblcell=document.getElementById("caltbl");
 var nrow = tblcell.rows.length;
 
+
+
+
+
+
+
     for (w=1; w < 6; w++){      
       for (d = 0; d < 7; d++) {
                
          if (!isNaN(myMonth[w][d])) {
-
-	 if(dCurYear== new Date().getFullYear() && dCurMonth == new Date().getMonth() && myMonth[w][d] == new Date().getDate()) {
-                 tblcell.rows[w].cells[d].bgColor ="#c0c0c0";
-            } else { 
-                tblcell.rows[w].cells[d].bgColor ="";
-            }
-           tblcell.rows[w].cells[d].innerText =  myMonth[w][d];
-
+	    
+         
+	    tblcell.rows[w].cells[d].innerText =  myMonth[w][d];
+          
+     
+ 
          } else {
             
              tblcell.rows[w].cells[d].innerText=  " ";
-             tblcell.rows[w].cells[d].bgColor ="";
+            
              
          }
        }  

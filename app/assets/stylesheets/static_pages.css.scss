@@ -132,7 +132,14 @@ table.calendar thead {
       font-size:12px;
       font-weight: bold; 
 }
-
+table.calendar tbody td{
+   CURSOR: Hand;
+   align: left;
+   font-size: 12px;
+   font-weight: bold;
+   width: 90px;
+   height: 90px;
+}
 table.calendar td:hover {
   background-color: #FFFFCC;
   color: #222;
