@@ -66,7 +66,7 @@ Appointment Time:
           var desc = (document.getElementById('appointment').value);
           if (desc != ""){
             if ($(this).attr('id')){
-                $('.calendar td.on').removeClass('on');
+                $('.calendar td').removeClass('on');
                 $(this).addClass("on");
                 $(this).append(" " + desc + " " + document.getElementById('apptime').value);
 
