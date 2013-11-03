@@ -1,4 +1,6 @@
 Myproject1::Application.routes.draw do
+  resources :appointments
+
 #  get "static_pages/home"
 #  get "static_pages/Project0"
 #  get "static_pages/Project1"

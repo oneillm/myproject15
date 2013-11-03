@@ -61,13 +61,15 @@ Appointment Time:
 <script type "text/javascript">
 
   $(document).ready(function() {
-     $(".calendar td").click(function() { 
+     $('.calendar td').delegate($(this),"click",function() { 
           
           var desc = (document.getElementById('appointment').value);
           if (desc != ""){
             if ($(this).attr('id')){
-                $('.calendar td').removeClass('on');
-                $(this).addClass("on");
+                 
+                $('.calendar td').css("background-color","");
+                $('.calendar td.on').removeClass('on');
+                $(this).css("background-color","#c0c0c0");
                 $(this).append(" " + desc + " " + document.getElementById('apptime').value);
 
             }

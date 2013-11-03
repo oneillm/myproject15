@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130929061703) do
+ActiveRecord::Schema.define(version: 20131103185357) do
+
+  create_table "appointments", force: true do |t|
+    t.string   "appdate"
+    t.string   "apptime"
+    t.string   "appdesc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projecttbls", force: true do |t|
     t.string   "ProjectID"

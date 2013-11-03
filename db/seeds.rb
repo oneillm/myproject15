@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+    appointments = Appointment.create(appdate: new Date().today apptime: 11 appdesc: 'Dr appt')
