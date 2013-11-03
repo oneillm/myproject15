@@ -19,6 +19,7 @@ Appointment Time:
      <%= "#{hour < 10 ? '0' : ''}#{hour}" %>
    <% end %>
 </select>
+<input type="hidden" id="curDate" value ="<%=@date%>" />
 </div>
 </form>
 <table id="calendar" class = "calendar">
@@ -46,10 +47,10 @@ Appointment Time:
       </tr><tr id="calrow">
 <% end %>
 <% if @date.year==Date.today.year && @date.mon == Date.today.mon &&  d.day == Date.today.day %>
-	<td id='sameday' class='on'>
+	<td id="<%=d.day%>"  class='on'>
 <% end %> 
 <% if  @date.year != Date.today.year || @date.mon !=Date.today.mon ||d.day != Date.today.day %>
-       <td id='nottoday' class='apptdesc'>
+       <td id="<%=d.day%>"  class='apptdesc'>
 <% end %>
     <%= d.day %> </td>
 
@@ -66,11 +67,16 @@ Appointment Time:
           var desc = (document.getElementById('appointment').value);
           if (desc != ""){
             if ($(this).attr('id')){
-                 
+                var dt = $(this).attr('id'); 
                 $('.calendar td').css("background-color","");
                 $('.calendar td.on').removeClass('on');
                 $(this).addClass('on');
-                $(this).append(" " + desc + " " + document.getElementById('apptime').value);
+                var t = document.getElementById('apptime').value;
+                $(this).append(" " + desc + " " + t);
+               var curLen = document.getElementById('curDate').value;
+                var nDt =  new Date(curLen.substr(0,4), curLen.substr(5,2)-1,dt);
+                appointment={"appdate":  nDt, "apptime": t, "appdesc": desc};
+                $.post('/appointments', appointment);
 
             }
           }                
