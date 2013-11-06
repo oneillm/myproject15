@@ -67,13 +67,19 @@ h1 {
 h2 {
   font-size: 1.2 em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-weight: normal;
   color: #000080;
 }
 h3 {
   margin-left: 20px;
+  font-size: 1em;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: normal;
+  color: #000080;
 }
 p {
   font-size: 1.1em;
@@ -99,9 +105,12 @@ table.center {
   border-color: #999999;
   border-collapse: collapse;
 }
-table.center thead {
+table.center thead{
   padding: 8px;
   background-color: #191970;
+  color: #CC00CC;
+  font-color: #CC00CC;
+  align: center; 
  
 }
 table.center tbody {
@@ -109,7 +118,7 @@ table.center tbody {
   color: #191970;
   border-color: #191970;
   border-style: solid;
-  text-align: left
+  text-align: left;
 
 }
 table.center tbody tr td {
@@ -126,11 +135,13 @@ table.calendar {
    margin-right:auto;
    table-layout: fixed; width: 100%;
 }
-table.calendar thead {
-      align:center;
+table.calendar thead div {
+      align: center;
       font-family: arial;
-      font-size:12px;
-      font-weight: bold; 
+      font-size: 18px;
+      font-weight: bold;
+      font-color: #CC00CC;
+      text-align: center; 
 }
 table.calendar tbody td{
    CURSOR: Hand;
@@ -155,4 +166,12 @@ table.calendar td:focus {
 }
 .on {
   background-color: #c0c0c0;
+}
+form {
+  font-size: 0.8 em;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: normal;
+  color: #000080;
 }

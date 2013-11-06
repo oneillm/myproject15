@@ -1,18 +1,16 @@
-<h2>
-<p>Calendar By Bhavaran Senapathi and Mayyin O'Neill</p>
-<%= link_to "<<    ", :month => (@date.last_year).strftime("%Y-%m-01") %>
-<%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
-  <%= h  @date.strftime("%B %Y") %>
-<%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
-<%= link_to "   >>", :month => (@date.next_year).strftime("%Y-%m-01") %>
-</h2>
+<h3>
+<p>Project 4 : Consistent Calendar By Mayyin O'Neill - Based on Initial Calendar From Project 3</p>
+<p>Initial Calendar: Project 3: Collaboration of Bhavaran Senapathi and Mayyin O'Neill</p>
+</h3>
 <script language="javascript"> </script>
 
 <form>
 <div>
-Appointment Description:
+<p></p>
+<p>     To enter calendar event: 1:Fill in  Calendar Entry Description; 2: Select Time Slot; 3: Click on the day on the Calendar for entry to be written </p> 
+Enter Calendar Entry Description:
 <input type="text" class="default-value" id="appointment" name="appointment" value="" />
-Appointment Time:
+Select Time Slot:
 <select id="apptime">
   <% (0..23).each do |hour| %>
      <option value="<%= hour %>">
@@ -20,10 +18,16 @@ Appointment Time:
    <% end %>
 </select>
 <input type="hidden" id="curDate" value ="<%=@date%>" />
-</div>
+<p></p>
 </form>
 <table id="calendar" class = "calendar">
-
+<tr>
+<%= link_to "<<    ", :month => (@date.last_year).strftime("%Y-%m-01") %>
+<%= link_to " <", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+  <%= h  @date.strftime("%B %Y") %>
+<%= link_to "> ", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+<%= link_to "   >>", :month => (@date.next_year).strftime("%Y-%m-01") %>
+</tr>
 <tr>
     <th>Sun</th>
     <th>Mon</th>
@@ -39,10 +43,10 @@ Appointment Time:
 
 <% (@date.beginning_of_month..@date.end_of_month).each do |d| %>
 <% if d==@date.beginning_of_month %>
-<% (0..d.wday-1).each do |d| %> 
+   <% (0..d.wday-1).each do |d| %> 
        <td> </td>
-  <%  end %>
- <% end %>
+   <%  end %>
+<% end %>
 <% if d.wday == 0 %>
       </tr><tr id="calrow">
 <% end %>
@@ -52,7 +56,21 @@ Appointment Time:
 <% if  @date.year != Date.today.year || @date.mon !=Date.today.mon ||d.day != Date.today.day %>
        <td id="<%=d.day%>"  class='apptdesc'>
 <% end %>
-    <%= d.day %> </td>
+   
+    <%= d.day %>
+    <% @app = Appointment.all %>
+       <% @app.each do |a| %>
+       <% if a.appdate.present? %>
+         <% @vaDt =  Date.parse(a.appdate) %>
+            <% if (@date.beginning_of_month..@date.end_of_month).include?(@vaDt)  %>
+               <% if @vaDt.day == d.day %>
+                     <%= a.appdesc %>
+                     <%= a.apptime %>
+               <% end %>
+            <% end %>
+          <% end %>
+        <% end %> 
+ </td>
 
 <% end %>
 </tr>
@@ -68,16 +86,29 @@ Appointment Time:
           if (desc != ""){
             if ($(this).attr('id')){
                 var dt = $(this).attr('id'); 
+                if (dt < 10){
+                    dt = "0" + dt;}
                 $('.calendar td').css("background-color","");
                 $('.calendar td.on').removeClass('on');
                 $(this).addClass('on');
                 var t = document.getElementById('apptime').value;
+                   if(t < 12)
+                    { 
+                      t = t + "AM";
+                    } else if ( t == 12 ) 
+                     { 
+                       t = t + "noon"; 
+                     }
+                      else {
+                        t=(t-12) + "PM";
+                     }
+                        
                 $(this).append(" " + desc + " " + t);
                var curLen = document.getElementById('curDate').value;
-                var nDt =  new Date(curLen.substr(0,4), curLen.substr(5,2)-1,dt);
-                appointment={"appdate":  nDt, "apptime": t, "appdesc": desc};
-                $.post('/appointments', appointment);
-
+                var nDt =  curLen.substr(0,4) + "-" + (curLen.substr(5,2)) + "-" + dt;     
+                appointment = {"appdate": nDt, "apptime": t, "appdesc": desc};
+                $.post('/appointments.json', appointment);
+                 
             }
           }                
      });
